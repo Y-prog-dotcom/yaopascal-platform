@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Shop Master — Boutique en ligne en Côte d'Ivoire. Mode, électronique, accessoires. Paiement Wave & Orange Money, livraison rapide.">
+<title>Shop Master — Démo E-commerce | YAO PASCAL</title>
+<link rel="stylesheet" href="_demo-shared.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+:root{--primary:#0891b2;--primary2:#0e7490;--accent:#06b6d4;--text:#0f172a;--muted:#64748b;--bg:#f1f5f9;--white:#fff;--border:#e2e8f0;--gold:#f59e0b;--red:#ef4444;--green:#10b981}
+body{background:white;color:var(--text);line-height:1.6}
+img{max-width:100%;display:block}
+
+.topb{background:var(--text);color:white;padding:8px 5%;font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.topb .left{display:flex;gap:18px;flex-wrap:wrap}
+
+.nav{background:white;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:36px;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.06);gap:20px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:800;color:var(--primary);text-decoration:none;flex-shrink:0}
+.logo .ic{width:42px;height:42px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:22px}
+.search{flex:1;max-width:500px;display:flex;border:2px solid var(--border);border-radius:10px;overflow:hidden}
+.search input{flex:1;border:none;padding:11px 14px;font-size:14px;outline:none;font-family:inherit}
+.search button{background:var(--primary);color:white;border:none;padding:0 22px;cursor:pointer;font-size:16px}
+.nav-icons{display:flex;gap:12px;align-items:center}
+.nav-ico{width:42px;height:42px;background:var(--bg);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;position:relative;text-decoration:none;color:var(--text)}
+.nav-ico:hover{background:var(--primary);color:white}
+.nav-ico .bd{position:absolute;top:-4px;right:-4px;background:var(--red);color:white;border-radius:50%;width:18px;height:18px;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:700}
+
+.cats{background:white;border-bottom:1px solid var(--border);padding:12px 5%;display:flex;gap:24px;overflow-x:auto;white-space:nowrap}
+.cats a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.cats a:hover{color:var(--primary)}
+
+/* HERO */
+.hero{padding:60px 5%;background-image:linear-gradient(135deg,rgba(8,145,178,.92),rgba(6,182,212,.85)),url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1600&q=80');background-size:cover;background-position:center;color:white;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;overflow:hidden;position:relative}
+.hero .tag{display:inline-block;padding:6px 14px;background:rgba(255,255,255,.2);color:white;border-radius:30px;font-size:12px;font-weight:600;margin-bottom:14px}
+.hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;margin-bottom:16px;line-height:1.1}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:17px;opacity:.9;margin-bottom:24px;max-width:500px}
+.hero .btn{padding:13px 28px;background:var(--gold);color:var(--text);border-radius:10px;text-decoration:none;font-weight:700;display:inline-block}
+.hero-img{border-radius:20px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.3)}
+.hero-img img{width:100%;height:300px;object-fit:cover}
+
+/* PROMO BANNERS */
+.promo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:20px 5%;margin-top:0}
+.promo{border-radius:14px;color:white;overflow:hidden;cursor:pointer;transition:.3s;position:relative;height:140px;display:flex;align-items:center;padding:20px;background-size:cover;background-position:center}
+.promo::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.7),rgba(0,0,0,.2))}
+.promo:hover{transform:translateY(-4px)}
+.promo > *{position:relative;z-index:1}
+.promo h4{font-size:18px;margin-bottom:4px}
+.promo p{font-size:13px;opacity:.95}
+.p1{background-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80')}
+.p2{background-image:url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&q=80')}
+.p3{background-image:url('https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&q=80')}
+
+section{padding:50px 5%}
+.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;flex-wrap:wrap;gap:14px}
+.head h2{font-size:26px;font-weight:800}
+.head h2 span{color:var(--primary)}
+.head a{color:var(--primary);text-decoration:none;font-weight:600;font-size:14px}
+
+/* PRODUCTS */
+.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.prod{background:white;border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.3s;cursor:pointer;position:relative}
+.prod:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.1);border-color:var(--primary)}
+.prod-img{height:220px;overflow:hidden;position:relative;background:#f8fafc}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.prod:hover .prod-img img{transform:scale(1.08)}
+.prod-tag{position:absolute;top:10px;left:10px;background:var(--red);color:white;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;z-index:2}
+.prod-fav{position:absolute;top:10px;right:10px;background:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;z-index:2}
+.prod-body{padding:16px}
+.prod-cat{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.prod-name{font-size:14px;font-weight:600;margin-bottom:8px;line-height:1.3;min-height:36px}
+.prod-rate{color:var(--gold);font-size:13px;margin-bottom:6px}
+.prod-rate span{color:var(--muted);font-size:11px}
+.prod-price{display:flex;align-items:baseline;gap:8px;margin-bottom:12px}
+.prod-price .now{font-size:17px;font-weight:800;color:var(--primary)}
+.prod-price .old{font-size:12px;color:var(--muted);text-decoration:line-through}
+.prod-btn{width:100%;background:var(--primary);color:white;border:none;padding:9px;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px;transition:.2s}
+.prod-btn:hover{background:var(--primary2)}
+
+/* CATEGORIES */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.cat-card{background:white;border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:.3s;text-align:center}
+.cat-card:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.cat-card .img{height:140px;overflow:hidden}
+.cat-card .img img{width:100%;height:100%;object-fit:cover}
+.cat-card .info{padding:14px}
+.cat-card h4{font-size:14px;margin-bottom:2px}
+.cat-card p{font-size:12px;color:var(--muted)}
+
+/* PAYMENT BAR */
+.pay-bar{background:var(--bg);padding:40px 5%;text-align:center}
+.pay-bar h3{font-size:16px;color:var(--muted);margin-bottom:18px;font-weight:600;text-transform:uppercase;letter-spacing:2px}
+.pay-logos{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
+.pay-logo{background:white;padding:14px 22px;border-radius:12px;border:1px solid var(--border);font-weight:700;font-size:15px;color:var(--text);display:flex;align-items:center;gap:8px}
+
+/* FEATURES */
+.feats{padding:30px 5%;background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.feat{display:flex;align-items:center;gap:14px}
+.feat .ic{font-size:36px;color:var(--primary)}
+.feat h4{font-size:14px;margin-bottom:2px}
+.feat p{font-size:12px;color:var(--muted)}
+
+/* CART DRAWER */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;display:none;align-items:center;justify-content:flex-end}
+.cart-overlay.show{display:flex}
+.cart-drawer{background:white;width:100%;max-width:420px;height:100vh;overflow-y:auto;padding:24px;animation:slide .3s}
+@keyframes slide{from{transform:translateX(100%)}}
+.cart-drawer h3{margin-bottom:18px;display:flex;justify-content:space-between}
+.cart-drawer h3 span{cursor:pointer;font-size:24px;color:var(--muted)}
+.cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border)}
+.cart-item .img{width:60px;height:60px;background:var(--bg);border-radius:10px;overflow:hidden;flex-shrink:0}
+.cart-item .img img{width:100%;height:100%;object-fit:cover}
+.cart-item .info{flex:1}
+.cart-item .name{font-size:13px;font-weight:600}
+.cart-item .qty{font-size:12px;color:var(--muted);margin-top:4px}
+.cart-item .price{font-weight:700;color:var(--primary)}
+.cart-total{padding-top:18px;border-top:2px solid var(--border);margin-top:14px}
+.cart-line{display:flex;justify-content:space-between;padding:6px 0;font-size:14px}
+.cart-line.tot{font-size:18px;font-weight:800;color:var(--primary);padding-top:10px;border-top:1px dashed var(--border);margin-top:8px}
+
+footer{background:var(--text);color:white;padding:50px 5% 24px}
+.ft-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;max-width:1200px;margin:0 auto 30px}
+footer h4{color:var(--accent);margin-bottom:14px;font-size:14px;text-transform:uppercase;letter-spacing:1px}
+footer ul{list-style:none}
+footer li{padding:5px 0;font-size:14px;opacity:.85}
+.ft-bot{text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);font-size:13px;opacity:.75}
+.ft-bot a{color:var(--accent);text-decoration:none}
+
+@media(max-width:800px){
+  .promo-row{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr;padding:40px 5%;text-align:center}
+  .hero p{margin-left:auto;margin-right:auto}
+  .topb{font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner"><span>🎨 <b>DÉMO</b> — Template E-commerce créé par <b>YAO PASCAL</b> · <a href="../devis.html?tpl=shop">Commander mon site →</a></span><span class="close" onclick="this.parentElement.style.display='none';document.body.style.paddingTop='0'">×</span></div>
+
+<div class="topb">
+  <div class="left"><span>📞 +225 27 22 44 55 66</span><span>📧 info@shopmaster.ci</span><span>🚚 Livraison rapide Abidjan</span></div>
+  <div><span>FR ▾ · FCFA</span></div>
+</div>
+
+<nav class="nav">
+  <a href="#" class="logo"><div class="ic">🛒</div>ShopMaster</a>
+  <div class="search">
+    <input placeholder="🔍 Rechercher un produit...">
+    <button>🔍</button>
+  </div>
+  <div class="nav-icons">
+    <a href="#" class="nav-ico" title="Compte">👤</a>
+    <a href="#" class="nav-ico" title="Favoris">♡<span class="bd">3</span></a>
+    <a href="#" class="nav-ico" title="Panier" onclick="document.querySelector('.cart-overlay').classList.add('show')">🛒<span class="bd">2</span></a>
+  </div>
+</nav>
+
+<div class="cats">
+  <a>🔥 Promotions</a>
+  <a>📱 Téléphones</a>
+  <a>💻 Informatique</a>
+  <a>👗 Mode femme</a>
+  <a>👔 Mode homme</a>
+  <a>👶 Enfants</a>
+  <a>🏠 Maison</a>
+  <a>🎮 Jeux</a>
+  <a>💄 Beauté</a>
+  <a>🍔 Alimentation</a>
+  <a>📚 Livres</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <span class="tag">🎉 SOLDES DE LA SEMAINE</span>
+    <h1>Jusqu'à <span>-50%</span> sur la mode & high-tech</h1>
+    <p>Plus de 1 000 produits à prix imbattables. Livraison rapide à Abidjan et partout en Côte d'Ivoire.</p>
+    <a href="#prods" class="btn">🛍️ Voir les promos</a>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=800&q=80" alt="Shopping en ligne">
+  </div>
+</section>
+
+<!-- PROMO -->
+<div class="promo-row">
+  <div class="promo p1"><div><h4>Mode femme</h4><p>Nouvelle collection -30%</p></div></div>
+  <div class="promo p2"><div><h4>Smartphones</h4><p>iPhone, Samsung, Xiaomi</p></div></div>
+  <div class="promo p3"><div><h4>Maison & Déco</h4><p>Livraison offerte</p></div></div>
+</div>
+
+<!-- FEATURES -->
+<div class="feats">
+  <div class="feat"><div class="ic">🚚</div><div><h4>Livraison rapide</h4><p>24-48h à Abidjan</p></div></div>
+  <div class="feat"><div class="ic">💳</div><div><h4>Paiement sécurisé</h4><p>Wave, OM, MoMo, CB</p></div></div>
+  <div class="feat"><div class="ic">↩️</div><div><h4>Retour 14 jours</h4><p>Satisfait ou remboursé</p></div></div>
+  <div class="feat"><div class="ic">💬</div><div><h4>Support 7j/7</h4><p>WhatsApp & téléphone</p></div></div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="prods">
+  <div class="head"><h2>🔥 Produits <span>en vedette</span></h2><a href="#">Voir tout →</a></div>
+  <div class="prods">
+    <div class="prod"><div class="prod-img"><img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&q=80" alt=""><div class="prod-tag">-25%</div><div class="prod-fav">♡</div></div>
+      <div class="prod-body"><div class="prod-cat">SMARTPHONE</div><div class="prod-name">Samsung Galaxy A54 5G 128GB</div><div class="prod-rate">★★★★★ <span>(124 avis)</span></div>
+        <div class="prod-price"><span class="now">175 000 F</span><span class="old">235 000 F</span></div>
+        <button class="prod-btn">🛒 Ajouter au panier</button></div>
+    </div>
+    <div class="prod"><div class="prod-img"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500&q=80" alt=""><div class="prod-tag">NEW</div><div class="prod-fav">♡</div></div>
+      <div class="prod-body"><div class="prod-cat">MODE FEMME</div><div class="prod-name">Robe élégante taille M/L</div><div class="prod-rate">★★★★☆ <span>(46 avis)</span></div>
+        <div class="prod-price"><span class="now">28 500 F</span><span class="old">42 000 F</span></div>
+        <button class="prod-btn">🛒 Ajouter au panier</button></div>
+    </div>
+    <div class="prod"><div class="prod-img"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" alt=""><div class="prod-tag">-40%</div><div class="prod-fav">♡</div></div>
+      <div class="prod-body"><div class="prod-cat">MONTRE</div><div class="prod-name">Smartwatch HW68 Bluetooth 5.0</div><div class="prod-rate">★★★★★ <span>(89 avis)</span></div>
+        <div class="prod-price"><span class="now">22 000 F</span><span class="old">38 000 F</span></div>
+        <button class="prod-btn">🛒 Ajouter au panier</button></div>
+    </div>
+    <div class="prod"><div class="prod-img"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" alt=""><div class="prod-tag">PROMO</div><div class="prod-fav">♡</div></div>
+      <div class="prod-body"><div class="prod-cat">CHAUSSURES</div><div class="prod-name">Baskets Nike Air Style 38-44</div><div class="prod-rate">★★★★★ <span>(212 avis)</span></div>
+        <div class="prod-price"><span class="now">35 000 F</span><span class="old">52 000 F</span></div>
+        <button class="prod-btn">🛒 Ajouter au panier</button></div>
+    </div>
+    <div class="prod"><div class="prod-img"><img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500&q=80" alt=""><div class="prod-tag">-30%</div><div class="prod-fav">♡</div></div>
+      <div class="prod-body"><div class="prod-cat">AUDIO</div><div class="prod-name">Écouteurs Bluetooth TWS Pro</div><div class="prod-rate">★★★★☆ <span>(67 avis)</span></div>
+        <div class="prod-price"><span class="now">15 500 F</span><span class="old">22 000 F</span></div>
+        <button class="prod-btn">🛒 Ajouter au panier</button></div>
+    </div>
+    <div class="prod"><div class="prod-img"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80" alt=""><div class="prod-tag">NEW</div><div class="prod-fav">♡</div></div>
+      <div class="prod-body"><div class="prod-cat">INFORMATIQUE</div><div class="prod-name">Laptop HP 15" i5 8GB 512GB SSD</div><div class="prod-rate">★★★★★ <span>(34 avis)</span></div>
+        <div class="prod-price"><span class="now">385 000 F</span><span class="old">450 000 F</span></div>
+        <button class="prod-btn">🛒 Ajouter au panier</button></div>
+    </div>
+    <div class="prod"><div class="prod-img"><img src="https://images.unsplash.com/photo-1522335789203-aaa2b3c8be36?w=500&q=80" alt=""><div class="prod-tag">-20%</div><div class="prod-fav">♡</div></div>
+      <div class="prod-body"><div class="prod-cat">BEAUTÉ</div><div class="prod-name">Kit maquillage professionnel 24p</div><div class="prod-rate">★★★★★ <span>(156 avis)</span></div>
+        <div class="prod-price"><span class="now">18 000 F</span><span class="old">28 500 F</span></div>
+        <button class="prod-btn">🛒 Ajouter au panier</button></div>
+    </div>
+    <div class="prod"><div class="prod-img"><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80" alt=""><div class="prod-tag">-15%</div><div class="prod-fav">♡</div></div>
+      <div class="prod-body"><div class="prod-cat">ACCESSOIRES</div><div class="prod-name">Sac à dos urbain antivol USB</div><div class="prod-rate">★★★★☆ <span>(72 avis)</span></div>
+        <div class="prod-price"><span class="now">14 500 F</span><span class="old">19 000 F</span></div>
+        <button class="prod-btn">🛒 Ajouter au panier</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT METHODS -->
+<div class="pay-bar">
+  <h3>💳 Moyens de paiement acceptés</h3>
+  <div class="pay-logos">
+    <div class="pay-logo">💧 Wave</div>
+    <div class="pay-logo">🟠 Orange Money</div>
+    <div class="pay-logo">🟡 MTN MoMo</div>
+    <div class="pay-logo">🟦 Moov Money</div>
+    <div class="pay-logo">💳 Carte bancaire</div>
+    <div class="pay-logo">💵 Paiement à la livraison</div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section>
+  <div class="head"><h2>🎯 Découvrez nos <span>catégories</span></h2></div>
+  <div class="cat-grid">
+    <div class="cat-card"><div class="img"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt=""></div><div class="info"><h4>Téléphonie</h4><p>147 produits</p></div></div>
+    <div class="cat-card"><div class="img"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&q=80" alt=""></div><div class="info"><h4>Mode</h4><p>320 produits</p></div></div>
+    <div class="cat-card"><div class="img"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&q=80" alt=""></div><div class="info"><h4>Informatique</h4><p>89 produits</p></div></div>
+    <div class="cat-card"><div class="img"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80" alt=""></div><div class="info"><h4>Maison</h4><p>215 produits</p></div></div>
+    <div class="cat-card"><div class="img"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80" alt=""></div><div class="info"><h4>Beauté</h4><p>178 produits</p></div></div>
+    <div class="cat-card"><div class="img"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&q=80" alt=""></div><div class="info"><h4>Jeux</h4><p>62 produits</p></div></div>
+  </div>
+</section>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="cart-drawer">
+    <h3>🛒 Mon panier (2) <span onclick="document.querySelector('.cart-overlay').classList.remove('show')">×</span></h3>
+    <div class="cart-item">
+      <div class="img"><img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=200&q=80" alt=""></div>
+      <div class="info"><div class="name">Samsung Galaxy A54 5G</div><div class="qty">Qté: 1</div></div>
+      <div class="price">175 000 F</div>
+    </div>
+    <div class="cart-item">
+      <div class="img"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80" alt=""></div>
+      <div class="info"><div class="name">Smartwatch HW68</div><div class="qty">Qté: 1</div></div>
+      <div class="price">22 000 F</div>
+    </div>
+    <div class="cart-total">
+      <div class="cart-line"><span>Sous-total</span><span>197 000 F</span></div>
+      <div class="cart-line"><span>Livraison</span><span>2 000 F</span></div>
+      <div class="cart-line tot"><span>Total</span><span>199 000 F</span></div>
+    </div>
+    <button class="prod-btn" style="margin-top:16px;padding:14px" onclick="alert('💳 Redirection vers paiement Wave / Orange Money...')">💳 Passer commande</button>
+    <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:10px">Paiement sécurisé Wave, Orange Money, CB</p>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-grid">
+    <div><h4>ShopMaster</h4><p style="font-size:13px;opacity:.8">Votre boutique en ligne de confiance en Côte d'Ivoire.</p></div>
+    <div><h4>Service client</h4><ul><li>Aide & FAQ</li><li>Livraison</li><li>Retours</li><li>Garantie</li></ul></div>
+    <div><h4>Mon compte</h4><ul><li>Mes commandes</li><li>Favoris</li><li>Adresses</li><li>Programme fidélité</li></ul></div>
+    <div><h4>Contact</h4><ul><li>📞 +225 27 22 44 55 66</li><li>💬 +225 05 54 76 76 64</li><li>📧 contact@shopmaster.ci</li><li>📍 Marcory, Abidjan</li></ul></div>
+  </div>
+  <div class="ft-bot">© 2026 ShopMaster — Site créé par <a href="../index.html">YAO PASCAL</a> · Plateforme SaaS</div>
+</footer>
+
+<a href="https://wa.me/2250554767664" class="wa-float" target="_blank">💬</a>
+<a href="../index.html" class="yp-credit">✨ Créé par YAO PASCAL</a>
+
+</body>
+</html>
