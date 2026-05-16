@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Immo Prestige — Agence immobilière à Abidjan. Vente, location, gestion. Plus de 200 biens en catalogue.">
+<title>Immo Prestige — Démo Immobilier | YAO PASCAL</title>
+<link rel="stylesheet" href="_demo-shared.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+:root{--primary:#1e40af;--primary2:#1e3a8a;--gold:#d4af37;--text:#0f172a;--muted:#64748b;--bg:#f8fafc;--white:#fff;--border:#e2e8f0;--green:#10b981}
+body{background:var(--bg);color:var(--text);line-height:1.6}
+
+.nav{background:white;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:36px;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.logo{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:800;color:var(--primary);text-decoration:none}
+.logo .ic{width:42px;height:42px;background:linear-gradient(135deg,var(--primary),var(--primary2));border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:22px}
+.nav ul{display:flex;gap:26px;list-style:none}
+.nav a{color:var(--text);text-decoration:none;font-size:14px;font-weight:500}
+.nav a:hover{color:var(--primary)}
+.btn{padding:11px 22px;border-radius:8px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-size:14px;transition:.3s}
+.btn-primary{background:var(--primary);color:white}
+.btn-primary:hover{background:var(--primary2);transform:translateY(-2px);box-shadow:0 8px 20px rgba(30,64,175,.3)}
+.btn-gold{background:var(--gold);color:var(--text);font-weight:700}
+.btn-outline{border:2px solid var(--primary);color:var(--primary);background:white}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1e3a8a 0%,#1e40af 50%,#2563eb 100%);color:white;padding:80px 5%;position:relative;overflow:hidden;text-align:center}
+.hero::before{content:'🏠';font-size:300px;position:absolute;top:-50px;right:-50px;opacity:.08}
+.hero h1{font-size:clamp(36px,5vw,58px);font-weight:800;margin-bottom:18px;line-height:1.1;letter-spacing:-1px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:18px;opacity:.9;max-width:680px;margin:0 auto 36px}
+
+/* SEARCH BOX */
+.search-box{max-width:960px;margin:0 auto;background:white;border-radius:16px;padding:18px;box-shadow:0 30px 60px rgba(0,0,0,.25);display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:10px;align-items:end}
+.sb-fld{text-align:left}
+.sb-fld label{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:4px;letter-spacing:.5px}
+.sb-fld select,.sb-fld input{width:100%;border:none;background:transparent;padding:6px 0;color:var(--text);font-size:14px;font-weight:600;font-family:inherit;outline:none}
+.sb-search{background:var(--primary);color:white;padding:14px 22px;border-radius:10px;border:none;cursor:pointer;font-weight:700;font-size:14px}
+.sb-search:hover{background:var(--primary2)}
+
+/* STATS BAR */
+.stats-bar{background:white;padding:30px 5%;display:flex;justify-content:space-around;flex-wrap:wrap;gap:20px;border-bottom:1px solid var(--border)}
+.sb-stat{text-align:center}
+.sb-stat .n{font-size:32px;font-weight:800;color:var(--primary)}
+.sb-stat .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+section{padding:80px 5%}
+.head{text-align:center;max-width:680px;margin:0 auto 50px}
+.head .lbl{color:var(--primary);font-weight:700;letter-spacing:3px;text-transform:uppercase;font-size:13px;margin-bottom:10px;display:block}
+.head h2{font-size:38px;font-weight:800;margin-bottom:12px;letter-spacing:-.5px}
+.head h2 span{color:var(--gold)}
+.head p{color:var(--muted);font-size:16px}
+
+/* FILTER TABS */
+.filter-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:36px;flex-wrap:wrap}
+.ft{padding:9px 22px;background:white;border:1.5px solid var(--border);color:var(--text);border-radius:30px;font-size:13px;font-weight:600;cursor:pointer;transition:.3s}
+.ft.active,.ft:hover{background:var(--primary);color:white;border-color:var(--primary)}
+
+/* BIEN GRID */
+.biens{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;max-width:1300px;margin:0 auto}
+.bien{background:white;border-radius:16px;overflow:hidden;border:1px solid var(--border);transition:.3s;cursor:pointer}
+.bien:hover{transform:translateY(-8px);box-shadow:0 25px 60px rgba(0,0,0,.12)}
+.bien-img{height:220px;display:flex;align-items:center;justify-content:center;font-size:90px;color:white;position:relative}
+.b1{background:linear-gradient(135deg,#1e40af,#3b82f6)}
+.b2{background:linear-gradient(135deg,#0ea5e9,#0369a1)}
+.b3{background:linear-gradient(135deg,#0891b2,#0e7490)}
+.b4{background:linear-gradient(135deg,#6366f1,#4338ca)}
+.b5{background:linear-gradient(135deg,#475569,#1e293b)}
+.b6{background:linear-gradient(135deg,#0f766e,#134e4a)}
+.bien-tag{position:absolute;top:14px;left:14px;background:white;color:var(--primary);padding:5px 12px;border-radius:30px;font-size:11px;font-weight:700}
+.bien-tag.location{background:var(--gold);color:var(--text)}
+.bien-tag.vente{background:var(--green);color:white}
+.bien-heart{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.95);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer}
+.bien-info{padding:22px}
+.bien-info h3{font-size:18px;margin-bottom:6px}
+.bien-info .loc{color:var(--muted);font-size:13px;margin-bottom:14px}
+.bien-info .loc::before{content:'📍 '}
+.bien-feat{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:14px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.bien-feat span{display:flex;align-items:center;gap:4px}
+.bien-foot{display:flex;justify-content:space-between;align-items:center}
+.bien-price{font-size:22px;font-weight:800;color:var(--primary)}
+.bien-price small{font-size:12px;color:var(--muted);font-weight:400}
+.bien-btn{background:var(--primary);color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:12px;font-weight:600}
+
+/* SERVICES */
+.services-bg{background:linear-gradient(135deg,#f1f5f9,white)}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:1200px;margin:0 auto}
+.svc{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center;transition:.3s}
+.svc:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,.08)}
+.svc .ic{width:64px;height:64px;background:linear-gradient(135deg,var(--primary),var(--primary2));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:30px;color:white;margin:0 auto 14px}
+.svc h3{font-size:17px;margin-bottom:8px}
+.svc p{color:var(--muted);font-size:13px}
+
+/* SIMULATEUR */
+.simu-bg{background:linear-gradient(135deg,var(--primary),var(--primary2));color:white}
+.simu-bg .head h2,.simu-bg .head .lbl{color:white}
+.simu-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1100px;margin:0 auto;background:white;color:var(--text);padding:40px;border-radius:24px}
+.simu-form .fld{margin-bottom:16px}
+.simu-form label{display:block;font-size:12px;font-weight:700;margin-bottom:6px;color:var(--text);text-transform:uppercase;letter-spacing:.5px}
+.simu-form input,.simu-form select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit}
+.simu-result{background:linear-gradient(135deg,#f1f5f9,#e2e8f0);padding:30px;border-radius:16px;text-align:center}
+.simu-result h3{color:var(--primary);margin-bottom:18px}
+.simu-result .big{font-size:46px;font-weight:800;color:var(--primary);margin:10px 0}
+.simu-result .lbl{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.simu-detail{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--border);font-size:13px}
+
+/* AGENTS */
+.agents{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+.agent{background:white;border-radius:16px;padding:24px;text-align:center;border:1px solid var(--border)}
+.agent .ph{width:90px;height:90px;background:linear-gradient(135deg,var(--primary),var(--gold));border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:40px;color:white}
+.agent h3{font-size:16px;margin-bottom:4px}
+.agent .role{color:var(--primary);font-size:12px;font-weight:600;margin-bottom:10px}
+.agent .contact{display:flex;gap:8px;justify-content:center;margin-top:12px}
+.agent .contact a{width:36px;height:36px;background:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:16px;color:var(--primary)}
+
+/* CTA */
+.cta-final{background:linear-gradient(135deg,var(--gold),#f5d77a);padding:60px 5%;text-align:center;color:var(--text)}
+.cta-final h2{font-size:34px;margin-bottom:14px}
+.cta-final p{margin-bottom:24px;font-size:16px}
+
+footer{background:#0f172a;color:white;padding:50px 5% 24px}
+.ft-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;max-width:1200px;margin:0 auto 30px}
+footer h4{color:var(--gold);margin-bottom:14px;font-size:14px;text-transform:uppercase;letter-spacing:1px}
+footer ul{list-style:none}
+footer li{padding:5px 0;font-size:14px;opacity:.85}
+.ft-bot{text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);font-size:13px;opacity:.75}
+.ft-bot a{color:var(--gold);text-decoration:none}
+
+@media(max-width:800px){.search-box{grid-template-columns:1fr 1fr}.nav ul{display:none}.simu-grid{grid-template-columns:1fr;padding:24px}}
+</style>
+</head>
+<body>
+
+<div class="demo-banner"><span>🎨 <b>DÉMO</b> — Template Immobilier créé par <b>YAO PASCAL</b> · <a href="../devis.html?tpl=immo">Commander mon site →</a></span><span class="close" onclick="this.parentElement.style.display='none';document.body.style.paddingTop='0'">×</span></div>
+
+<nav class="nav">
+  <a href="#" class="logo"><div class="ic">🏠</div>Immo Prestige</a>
+  <ul><li><a href="#biens">Nos biens</a></li><li><a href="#services">Services</a></li><li><a href="#simu">Simulateur</a></li><li><a href="#agents">Agents</a></li><li><a href="#contact">Contact</a></li></ul>
+  <a href="#contact" class="btn btn-primary">📞 Nous contacter</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Trouvez le <span>bien de vos rêves</span></h1>
+  <p>Plus de 200 biens immobiliers sélectionnés à Abidjan et dans toute la Côte d'Ivoire. Vente, location, gestion locative.</p>
+  <div class="search-box">
+    <div class="sb-fld"><label>Type</label><select><option>Tous types</option><option>Appartement</option><option>Villa</option><option>Studio</option><option>Bureau</option><option>Terrain</option></select></div>
+    <div class="sb-fld"><label>Transaction</label><select><option>Vente</option><option>Location</option></select></div>
+    <div class="sb-fld"><label>Quartier</label><select><option>Tous quartiers</option><option>Cocody</option><option>Plateau</option><option>Marcory</option><option>Riviera</option><option>Yopougon</option></select></div>
+    <div class="sb-fld"><label>Budget max</label><select><option>Sans limite</option><option>50M FCFA</option><option>100M FCFA</option><option>250M FCFA</option><option>500M FCFA</option></select></div>
+    <button class="sb-search">🔍 Rechercher</button>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="sb-stat"><div class="n">247</div><div class="l">Biens disponibles</div></div>
+  <div class="sb-stat"><div class="n">1 250</div><div class="l">Transactions réussies</div></div>
+  <div class="sb-stat"><div class="n">15</div><div class="l">Années d'expérience</div></div>
+  <div class="sb-stat"><div class="n">98%</div><div class="l">Clients satisfaits</div></div>
+</div>
+
+<!-- BIENS -->
+<section id="biens">
+  <div class="head">
+    <span class="lbl">Catalogue</span>
+    <h2>Nos biens à la <span>une</span></h2>
+    <p>Une sélection de nos meilleures propriétés disponibles.</p>
+  </div>
+  <div class="filter-tabs">
+    <button class="ft active">Tous</button>
+    <button class="ft">🏘️ Vente</button>
+    <button class="ft">🔑 Location</button>
+    <button class="ft">🏢 Bureau</button>
+    <button class="ft">🌴 Terrain</button>
+  </div>
+  <div class="biens">
+    <div class="bien"><div class="bien-img b1">🏡<div class="bien-tag vente">VENTE</div><div class="bien-heart">♡</div></div>
+      <div class="bien-info"><h3>Villa moderne 5 chambres</h3><div class="loc">Cocody Riviera Golf, Abidjan</div>
+        <div class="bien-feat"><span>🛏️ 5 ch</span><span>🛁 4 sdb</span><span>📐 350m²</span><span>🚗 2 places</span></div>
+        <div class="bien-foot"><div class="bien-price">185M <small>FCFA</small></div><a href="#" class="bien-btn">Visiter</a></div></div>
+    </div>
+    <div class="bien"><div class="bien-img b2">🏢<div class="bien-tag location">LOCATION</div><div class="bien-heart">♡</div></div>
+      <div class="bien-info"><h3>Appartement haut standing</h3><div class="loc">Plateau, Abidjan</div>
+        <div class="bien-feat"><span>🛏️ 3 ch</span><span>🛁 2 sdb</span><span>📐 145m²</span><span>🏊 Piscine</span></div>
+        <div class="bien-foot"><div class="bien-price">850K <small>F/mois</small></div><a href="#" class="bien-btn">Visiter</a></div></div>
+    </div>
+    <div class="bien"><div class="bien-img b3">🏖️<div class="bien-tag vente">VENTE</div><div class="bien-heart">♡</div></div>
+      <div class="bien-info"><h3>Villa pieds dans l'eau</h3><div class="loc">Assinie, bord de mer</div>
+        <div class="bien-feat"><span>🛏️ 6 ch</span><span>🛁 5 sdb</span><span>📐 450m²</span><span>🌊 Vue mer</span></div>
+        <div class="bien-foot"><div class="bien-price">320M <small>FCFA</small></div><a href="#" class="bien-btn">Visiter</a></div></div>
+    </div>
+    <div class="bien"><div class="bien-img b4">🏠<div class="bien-tag vente">VENTE</div><div class="bien-heart">♡</div></div>
+      <div class="bien-info"><h3>Duplex contemporain</h3><div class="loc">II Plateaux, Cocody</div>
+        <div class="bien-feat"><span>🛏️ 4 ch</span><span>🛁 3 sdb</span><span>📐 220m²</span><span>🌳 Jardin</span></div>
+        <div class="bien-foot"><div class="bien-price">125M <small>FCFA</small></div><a href="#" class="bien-btn">Visiter</a></div></div>
+    </div>
+    <div class="bien"><div class="bien-img b5">🏢<div class="bien-tag" style="background:#475569;color:white">BUREAU</div><div class="bien-heart">♡</div></div>
+      <div class="bien-info"><h3>Plateau de bureaux</h3><div class="loc">Marcory Zone 4, Abidjan</div>
+        <div class="bien-feat"><span>📐 300m²</span><span>🚗 Parking</span><span>⚡ Climatisé</span></div>
+        <div class="bien-foot"><div class="bien-price">2M <small>F/mois</small></div><a href="#" class="bien-btn">Visiter</a></div></div>
+    </div>
+    <div class="bien"><div class="bien-img b6">🌴<div class="bien-tag" style="background:#0f766e;color:white">TERRAIN</div><div class="bien-heart">♡</div></div>
+      <div class="bien-info"><h3>Terrain titre foncier</h3><div class="loc">Bingerville, Abidjan</div>
+        <div class="bien-feat"><span>📐 1 500m²</span><span>📄 ACD</span><span>💧 Eau & ⚡</span></div>
+        <div class="bien-foot"><div class="bien-price">45M <small>FCFA</small></div><a href="#" class="bien-btn">Visiter</a></div></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px"><a href="#" class="btn btn-primary">Voir les 247 biens →</a></div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="head"><span class="lbl">Nos services</span><h2>Une expertise <span>complète</span></h2></div>
+  <div class="svc-grid">
+    <div class="svc"><div class="ic">🏘️</div><h3>Vente immobilière</h3><p>Achat et vente de biens neufs ou anciens partout en Côte d'Ivoire.</p></div>
+    <div class="svc"><div class="ic">🔑</div><h3>Location & gestion</h3><p>Trouvez votre logement ou confiez-nous la gestion de vos biens.</p></div>
+    <div class="svc"><div class="ic">📋</div><h3>Conseil & expertise</h3><p>Estimation gratuite, conseils juridiques et fiscaux personnalisés.</p></div>
+    <div class="svc"><div class="ic">🏗️</div><h3>Promotion immobilière</h3><p>Vente sur plan, suivi de chantier, livraison clé en main.</p></div>
+    <div class="svc"><div class="ic">📑</div><h3>ACD & titre foncier</h3><p>Accompagnement complet pour la régularisation foncière.</p></div>
+    <div class="svc"><div class="ic">💰</div><h3>Financement</h3><p>Partenariats avec les banques pour vos crédits immobiliers.</p></div>
+  </div>
+</section>
+
+<!-- SIMULATEUR -->
+<section id="simu" class="simu-bg">
+  <div class="head"><span class="lbl">Simulateur</span><h2>Estimez votre <span style="color:var(--gold)">mensualité</span></h2><p style="color:rgba(255,255,255,.85)">Crédit immobilier en quelques clics</p></div>
+  <div class="simu-grid">
+    <div class="simu-form">
+      <div class="fld"><label>Montant du bien (FCFA)</label><input type="number" value="50000000" oninput="calc()"></div>
+      <div class="fld"><label>Apport personnel (FCFA)</label><input type="number" value="10000000" oninput="calc()"></div>
+      <div class="fld"><label>Durée (années)</label><select onchange="calc()"><option>10</option><option selected>15</option><option>20</option><option>25</option></select></div>
+      <div class="fld"><label>Taux d'intérêt (%)</label><input type="number" value="7.5" step="0.1" oninput="calc()"></div>
+    </div>
+    <div class="simu-result">
+      <h3>📊 Votre simulation</h3>
+      <div class="lbl">Mensualité estimée</div>
+      <div class="big" id="mensu">370 600 F</div>
+      <div class="simu-detail"><span>Montant emprunté</span><span><b>40 000 000 F</b></span></div>
+      <div class="simu-detail"><span>Durée</span><span><b>15 ans (180 mois)</b></span></div>
+      <div class="simu-detail"><span>Coût total du crédit</span><span><b id="cout">26 708 000 F</b></span></div>
+      <a href="#contact" class="btn btn-primary" style="width:100%;margin-top:18px">Demander un financement</a>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTS -->
+<section id="agents">
+  <div class="head"><span class="lbl">Notre équipe</span><h2>Vos <span>agents</span> dédiés</h2></div>
+  <div class="agents">
+    <div class="agent"><div class="ph">👨‍💼</div><h3>Konan YAO</h3><div class="role">Directeur agence</div><p style="font-size:12px;color:var(--muted)">15 ans · Cocody, Plateau</p><div class="contact"><a href="tel:+225">📞</a><a href="https://wa.me/2250554767664">💬</a><a href="mailto:#">✉️</a></div></div>
+    <div class="agent"><div class="ph">👩‍💼</div><h3>Aïsha KONÉ</h3><div class="role">Agent senior</div><p style="font-size:12px;color:var(--muted)">10 ans · Marcory, Treichville</p><div class="contact"><a href="tel:+225">📞</a><a href="https://wa.me/2250554767664">💬</a><a href="mailto:#">✉️</a></div></div>
+    <div class="agent"><div class="ph">👨‍💼</div><h3>Yves OUATTARA</h3><div class="role">Agent commercial</div><p style="font-size:12px;color:var(--muted)">8 ans · Yopougon, Abobo</p><div class="contact"><a href="tel:+225">📞</a><a href="https://wa.me/2250554767664">💬</a><a href="mailto:#">✉️</a></div></div>
+    <div class="agent"><div class="ph">👩‍💼</div><h3>Marie DIARRA</h3><div class="role">Gestion locative</div><p style="font-size:12px;color:var(--muted)">7 ans · Gestion patrimoine</p><div class="contact"><a href="tel:+225">📞</a><a href="https://wa.me/2250554767664">💬</a><a href="mailto:#">✉️</a></div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta-final">
+  <h2>Vous avez un bien à <strong>vendre ou à louer</strong> ?</h2>
+  <p>Estimation gratuite en moins de 24h. Confiez votre bien à un expert.</p>
+  <a href="../devis.html?tpl=immo" class="btn btn-primary" style="background:var(--text);color:white">📋 Demander une estimation</a>
+</section>
+
+<footer>
+  <div class="ft-grid">
+    <div><h4>Immo Prestige</h4><p style="font-size:13px;opacity:.8">Votre partenaire immobilier de confiance depuis 2010.</p></div>
+    <div><h4>Services</h4><ul><li>Vente</li><li>Location</li><li>Gestion locative</li><li>Promotion</li></ul></div>
+    <div><h4>Quartiers</h4><ul><li>Cocody</li><li>Plateau</li><li>Marcory</li><li>Riviera</li><li>Yopougon</li></ul></div>
+    <div><h4>Contact</h4><ul><li>📞 +225 27 22 44 55 66</li><li>💬 +225 05 54 76 76 64</li><li>📧 contact@immo-prestige.ci</li></ul></div>
+  </div>
+  <div class="ft-bot">© 2026 Immo Prestige — Site créé par <a href="../index.html">YAO PASCAL</a> · Plateforme SaaS</div>
+</footer>
+
+<a href="https://wa.me/2250554767664" class="wa-float" target="_blank">💬</a>
+<a href="../index.html" class="yp-credit">✨ Créé par YAO PASCAL</a>
+
+<script>
+function calc(){
+  const inputs=document.querySelectorAll('.simu-form input,.simu-form select');
+  const montant=+inputs[0].value;
+  const apport=+inputs[1].value;
+  const annees=+inputs[2].value;
+  const taux=+inputs[3].value/100/12;
+  const cap=montant-apport;
+  const n=annees*12;
+  const m=cap*taux/(1-Math.pow(1+taux,-n));
+  document.getElementById('mensu').textContent=Math.round(m).toLocaleString('fr-FR')+' F';
+  document.getElementById('cout').textContent=Math.round(m*n-cap).toLocaleString('fr-FR')+' F';
+}
+</script>
+</body>
+</html>
